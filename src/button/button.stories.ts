@@ -16,15 +16,20 @@ export default {
     decorators: [withKnobs, withActions, addContainer(container)],
 };
 
+/*
+Issue with trailing still
+*/
 export const SimpleCoolButtonStory: StoryType = () => ({
-    template: `<mwc-button icon="code" disabled.bind="disabled" unelevated.bind="unelevated" raised.bind="raised" standard label.bind="type">MWC Button</mwc-button>`,
+    template: `<mwc-button trailingIcon="false" icon="\${icons && icon}" disabled.bind="disabled" unelevated.bind="unelevated" raised.bind="raised" standard label.bind="type">\${buttonText}</mwc-button>`,
     state: {
         standard: boolean('standard', true),
         unelevated: boolean('unelevated', false),
         raised: boolean('raised', false),
         disabled: boolean('disabled', false),
         buttonClick: action('Button Click'),
-        icons: radios('icons', { 'none': '', 'normal': 'normal', 'leading': 'leading' }, '')
+        buttonText: text('Label', 'Material Button'),
+        icon: text('Icon', 'code'),
+        icons: radios('icons', { 'none': '', 'leading': 'leading', 'trailing': 'trailing' }, '')
     },
     title: 'asdfasfd'
 
